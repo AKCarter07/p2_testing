@@ -30,16 +30,23 @@ public class WebDriver {
         login.click();
 
 
+    }
+    public static void ca(String[] args) {
 
-//        WebDriverWait loginwait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
-//        WebElement login;
-//        By byXpath = By.xpath("//*[@id=\"navbarBasicExample\"]/div[2]/div/div/a[1]");
-//        loginwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"navbarBasicExample\"]/div[2]/div/div/a[1]")));
-//
-//        login = driver.findElement(byXpath);
-//
-//        login.click();
+        ChromeDriver driver = new ChromeDriver();
 
+        driver.get("http://127.0.0.1:5500/login.html");
+
+        WebElement create_account = driver.findElement(By.xpath("//*[@id=\"navbarBasicExample\"]/div[1]/a[2]"));
+        WebElement username = driver.findElement(By.xpath("//*[@id=\"username-input\"]"));
+        WebElement password = driver.findElement(By.xpath("//*[@id=\"password-input\"]"));
+        WebElement genre = driver.findElement(By.xpath("//*[@id=\"firstname-input\"]"));
+
+        create_account.click();
+        username.sendKeys("JohnDoe");
+        password.sendKeys("password");
+        genre.sendKeys("Fantasy");
     }
 }
