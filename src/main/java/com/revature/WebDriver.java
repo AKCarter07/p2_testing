@@ -21,9 +21,11 @@ public class WebDriver {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         ChromeDriver driver = new ChromeDriver(options);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         driver.get("http://ec2-3-95-211-243.compute-1.amazonaws.com/home.html");
         WebElement login = driver.findElement(By.xpath("//*[@id=\"login-btn\"]"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         login.click();
 
         WebElement username = driver.findElement(By.xpath("//*[@id=\"username-input\"]"));
@@ -31,34 +33,40 @@ public class WebDriver {
         WebElement sign_in = driver.findElement(By.xpath("//*[@id=\"login-btn\"]"));
 
         username.sendKeys("Elwy");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         password.sendKeys("elf");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         sign_in.click();
 
+        WebElement logout = driver.findElement(By.xpath("//*[@id=\"logout-btn\"]"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        logout.click();
 
-        WebElement loginbutton = driver.findElement((By.xpath("//*[@id=\"login-btn\"]")));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+//        WebElement loginbutton = driver.findElement((By.xpath("//*[@id=\"login-btn\"]")));
+
 //        wait.until
 
 //        loginbutton.click();
 
 
     }
-    public static void ca(String[] args) {
+//    public static void ca(String[] args) {
+//
+//        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+//
+//        ChromeDriver driver = new ChromeDriver();
+//
+//        driver.get("http://127.0.0.1:5500/login.html");
+//
+//        WebElement create_account = driver.findElement(By.xpath("//*[@id=\"navbarBasicExample\"]/div[1]/a[2]"));
+//        WebElement username = driver.findElement(By.xpath("//*[@id=\"username-input\"]"));
+//        WebElement password = driver.findElement(By.xpath("//*[@id=\"password-input\"]"));
+//        WebElement genre = driver.findElement(By.xpath("//*[@id=\"firstname-input\"]"));
+//
+//        create_account.click();
+//        username.sendKeys("JohnDoe");
+//        password.sendKeys("password");
+//        genre.sendKeys("Fantasy");
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-
-        ChromeDriver driver = new ChromeDriver();
-
-        driver.get("http://127.0.0.1:5500/login.html");
-
-        WebElement create_account = driver.findElement(By.xpath("//*[@id=\"navbarBasicExample\"]/div[1]/a[2]"));
-        WebElement username = driver.findElement(By.xpath("//*[@id=\"username-input\"]"));
-        WebElement password = driver.findElement(By.xpath("//*[@id=\"password-input\"]"));
-        WebElement genre = driver.findElement(By.xpath("//*[@id=\"firstname-input\"]"));
-
-        create_account.click();
-        username.sendKeys("JohnDoe");
-        password.sendKeys("password");
-        genre.sendKeys("Fantasy");
-    }
 }

@@ -28,24 +28,32 @@ public class br {
         WebElement login = driver.findElement(By.xpath("//*[@id=\"login-btn\"]"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
+
         username.sendKeys("Bren");
         password.sendKeys("tabaxi");
+
         login.click();
-//        wait.until(ExpectedConditions.elementToBeClickable(By.tagName("//*[@id=\"my-lib\"]")));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         WebElement library = driver.findElement(By.xpath("//*[@id=\"my-lib\"]"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         library.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         WebElement book = driver.findElement(By.xpath("//*[@id=\"9780786966912\"]"));
         book.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         WebElement review = driver.findElement(By.xpath("//*[@id=\"add-review\"]"));
         review.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         WebElement rating = driver.findElement(By.xpath("//*[@id=\"rating-input\"]"));
         rating.sendKeys("10");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         WebElement review_text = driver.findElement(By.xpath("//*[@id=\"review-input\"]"));
         review_text.sendKeys("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus dui eget auctor viverra. Sed nulla urna, ullamcorper at enim rutrum, gravida imperdiet ex. Nullam enim felis,");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         WebElement submit = driver.findElement((By.xpath("//*[@id=\"review-input\"]")));
         submit.click();
+
+        driver.get("http://ec2-3-95-211-243.compute-1.amazonaws.com/home.html");
 
 
 

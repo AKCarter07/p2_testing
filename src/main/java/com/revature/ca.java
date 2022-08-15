@@ -19,7 +19,7 @@ public class ca {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        options.addArguments(("--incognito"));
+//        options.addArguments(("--incognito"));
         ChromeDriver driver = new ChromeDriver(options);
 
         driver.get("http://ec2-3-95-211-243.compute-1.amazonaws.com/registration.html");
@@ -36,8 +36,11 @@ public class ca {
 //        create_account.click();
 
         username.sendKeys("JohnDoe");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         password.sendKeys("password");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         genre.sendKeys("Fantasy");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         sign_up.click();
     }
 }
