@@ -4,8 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.xml.ws.WebEndpoint;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
 // account creation selenium
 
 public class ca {
@@ -14,20 +19,25 @@ public class ca {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
+        options.addArguments(("--incognito"));
         ChromeDriver driver = new ChromeDriver(options);
 
-        driver.get("http://127.0.0.1:5500/login.html");
+        driver.get("http://ec2-3-95-211-243.compute-1.amazonaws.com/registration.html");
 
-        WebElement create_account = driver.findElement(By.xpath("//*[@id=\"navbarBasicExample\"]/div[1]/a[2]"));
+//        WebElement create_account = driver.findElement(By.xpath("//*[@id=\"create-account\"]"));
         WebElement username = driver.findElement(By.xpath("//*[@id=\"username-input\"]"));
         WebElement password = driver.findElement(By.xpath("//*[@id=\"password-input\"]"));
-        WebElement genre = driver.findElement(By.xpath("//*[@id=\"firstname-input\"]"));
+        WebElement genre = driver.findElement(By.xpath("//*[@id=\"fav-genre-input\"]"));
+//        WebDriverWait cawait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement sign_up = driver.findElement(By.xpath("//*[@id=\"register-submit-btn\"]"));
 
 
+//        cawait.until(ExpectedConditions.elementToBeClickable(By.xpath("\"//*[@id=\\\"create-account\\\"]\"")));
+//        create_account.click();
 
-        create_account.click();
         username.sendKeys("JohnDoe");
         password.sendKeys("password");
         genre.sendKeys("Fantasy");
+        sign_up.click();
     }
 }

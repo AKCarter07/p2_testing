@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,17 +18,28 @@ public class WebDriver {
 
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
-        ChromeDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        ChromeDriver driver = new ChromeDriver(options);
 
-        driver.get("http://127.0.0.1:5500/login.html");
+        driver.get("http://ec2-3-95-211-243.compute-1.amazonaws.com/home.html");
+        WebElement login = driver.findElement(By.xpath("//*[@id=\"login-btn\"]"));
+        login.click();
 
         WebElement username = driver.findElement(By.xpath("//*[@id=\"username-input\"]"));
         WebElement password = driver.findElement(By.xpath("//*[@id=\"password-input\"]"));
-        WebElement login = driver.findElement(By.xpath("//*[@id=\"login-btn\"]"));
+        WebElement sign_in = driver.findElement(By.xpath("//*[@id=\"login-btn\"]"));
 
         username.sendKeys("Elwy");
         password.sendKeys("elf");
-        login.click();
+        sign_in.click();
+
+
+        WebElement loginbutton = driver.findElement((By.xpath("//*[@id=\"login-btn\"]")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//        wait.until
+
+//        loginbutton.click();
 
 
     }
