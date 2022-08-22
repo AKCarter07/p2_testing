@@ -39,6 +39,17 @@ public class Home {
         Assert.assertEquals(driver.getCurrentUrl(), String.format("http://%s/user.html", url));
     }
 
+    @When("I type {string} into the Search by Isbn Box")
+    public void iTypeAnIsbnOf(String isbn) {homePage.typeIsbn(isbn);}
 
+    @And ("I click the search by isbn button")
+    public void iClickIsbnSearch() {homePage.clickSearchIsbn();}
+
+    @Then("I should be redirected to the book page")
+    public void iShouldBeRedirectedToTheBookPage() {
+        WebDriverWait wdw = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wdw.until(ExpectedConditions.urlToBe(String.format("http://%s/book-reviews-1.html", url)));
+        Assert.assertEquals(driver.getCurrentUrl(), String.format("http://%s/book-reviews-1.html", url));
+    }
 
 }
