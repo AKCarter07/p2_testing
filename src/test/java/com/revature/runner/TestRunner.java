@@ -12,8 +12,10 @@ import org.testng.annotations.BeforeMethod;
 
 @CucumberOptions(
         glue="com.revature.steps",
-        features={"src/test/resources/homePage.feature",
-                    "src/test/resources/login.feature"}
+        features={
+                "src/test/resources/homePage.feature",
+                "src/test/resources/login.feature",
+                "src/test/resources/bookPage.feature"}
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 
