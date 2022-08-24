@@ -39,4 +39,6 @@ public class HomePage {
 
     public void clickSearchIsbn() {searchIsbnBtn.click();}
 
+    public WebElement getIsbnSearch(){return searchIsbnBtn;}
+
 }

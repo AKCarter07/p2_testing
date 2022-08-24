@@ -28,4 +28,8 @@ public class UserPage {
     }
 
     public String getUsername(){ return title.getText(); }
+
+    public WebElement getFirstBook(){return firstBook;}
+
+    public void clickFirstBook(){firstBook.click();}
 }
